@@ -6,7 +6,7 @@ const Todo = require("../models/todo");
 router.post("/", async (req, res) => {
   try {
     const todo = await Todo.create(req.body);
-    res.status(201).json(todo);
+    res.status(200).json(todo);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -15,12 +15,16 @@ router.post("/", async (req, res) => {
 // Get all todos
 router.get("/", async (req, res) => {
   try {
-    const todos = await Todo.find();
+    const todos = await Todo.find()
     res.json(todos);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
+
+// router.put("",async (req,res)=>{
+//   const update = await Todo.findByIdAndUpdate(req.)
+// });
 
 // Update todo details
 router.put("/:id", async (req, res) => {
